@@ -11,5 +11,6 @@ def user_recommendation(uid:User):
     user=users_id(uid)
     job=rank_job(user)
     return {
-        
+        "user_id":uid,
+        "recommended_jobs": job
     }
