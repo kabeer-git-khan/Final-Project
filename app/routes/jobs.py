@@ -1,32 +1,20 @@
 from fastapi import APIRouter, HTTPException
-from models.job import JobCreate
-from store.memory import jobs_seed
+from models.job import JobCreate, Job
+from store.memory import jobs_seed, jobs, add_job, jobs_id
 
 router = APIRouter()
 
 
-@router.post("/jobs")
+@router.post("/addjobs")
 def add_job(job: JobCreate):
-    
-    jobs_seed{
-        "id":job.id,
-        "name":job.name,
-        "description":job.description,
-        "industry": job.industry,
-        "keyword":job.keywords
-    }
+    job=add_job()
     return job["id"]
-
 
 @router.get("/jobs")
 def get_all_jobs():
-    return jobs_seed
+    return jobs()
 
 @router.get("/job/{id}")
-def get_id(id: int):
-    if id not in jobs_seed.get(id):
-        HTTPExceptipn(status_code=404, detail="Not Found")
-        
-    return jobs_seed.get(id)
-
-@router.post()
+def get_id(id: Job):
+    job=jobs_id(id)
+    return job

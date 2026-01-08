@@ -1,3 +1,5 @@
+from models.job import JobCreate
+from models.user import UserCreate
 jobs_seed = [
     {
         "id": 1,
@@ -144,3 +146,45 @@ users_seed = [
     }
 ]
 
+
+def add_job(job: JobCreate):
+    
+    job_id=jobs_seed.get(id).max()+1
+    
+    jobs_seed{
+        "id":job_id,
+        "name":job.name,
+        "description":job.description,
+        "industry": job.industry,
+        "keyword":job.keywords
+    }
+    return job["id"]
+
+def jobs():
+    return jobs_seed["name"]
+
+def jobs_id(id: int):
+    if id not in jobs_seed.get(id):
+        HTTPExceptipn(status_code=404, detail="Not Found")
+    return jobs_seed.get(id)
+
+
+
+def users():
+    return users_seed["name"]
+
+def users_id(id: int):
+    if id not in users_seed.get(id):
+        HTTPExceptipn(status_code=404, detail="Not Found")
+    return users_seed.get(id)
+
+def add_user(user: UserCreate):
+   user_id=users_seed.get(id).max()+1
+   users_seed {
+        "id":user_id,
+        "name":user.name,
+        "description":user.description,
+        "industry": user.industry,
+        "keyword":user.keywords
+    }
+   return users_seed["id"]
